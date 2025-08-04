@@ -29,8 +29,30 @@ class Algebra:
 
   def __str__(self):
     return self.equation
+  
+  def add(self, index_1, index_2):
+    return int(self.list_of_terms[index_1]) + int(self.list_of_terms[index_2])
+  
+  def subtract(self, index_1, index_2):
+    return int(self.list_of_terms[index_1]) - int(self.list_of_terms[index_2])
+  
+  def multiply(self, index_1, index_2):
+    return int(self.list_of_terms[index_1]) * int(self.list_of_terms[index_2])
+
+  def divide(self, index_1, index_2):
+    return int(self.list_of_terms[index_1]) / int(self.list_of_terms[index_2])
+  
+  def simple_equation(self, indices):
+    if self.list_of_terms[indices[1]] == "+":
+      return self.add(indices[0], indices[2])
+    if self.list_of_terms[indices[1]] == "-":
+      return self.subtract(indices[0], indices[2])
+    if self.list_of_terms[indices[1]] == "*":
+      return self.multiply(indices[0], indices[2])
+    if self.list_of_terms[indices[1]] == "/":
+      return self.divide(indices[0], indices[2])
 
 
-my_equation = Algebra("x+x-y=z")
+my_equation = Algebra("3/3=x")
 
-print(my_equation.list_of_terms)
+print(my_equation.simple_equation([0, 1, 2]))
